@@ -21,6 +21,8 @@ namespace Console_CircusTrainChallenge
             Size size = default;
             int aantal = 0;
             string status = "add";
+            UserInput userInput = new UserInput();
+            Wagon wagon = new Wagon();
 
             Console.WriteLine("Dit is de circus train challenge");
             Console.WriteLine("Selecteer je dieren: soort, grootte, hoeveel, continue");
@@ -33,6 +35,7 @@ namespace Console_CircusTrainChallenge
                     break;
                 }
 
+                wagon.CheckWagon(animals);
                 //kan ook switch case zijn
                 void ChooseDiet()
                 {
@@ -61,6 +64,7 @@ namespace Console_CircusTrainChallenge
                 }
 
                 ChooseDiet();
+                //userInput.ChooseSize();
                 
                 //kan ook switch case zijn
                 void ChooseSize()
@@ -68,23 +72,23 @@ namespace Console_CircusTrainChallenge
                     while (true)
                     {
                         Console.WriteLine("Kies je grootte");
-                        Console.WriteLine("Small : 3");
-                        Console.WriteLine("Medium : 5");
-                        Console.WriteLine("Large : 7");
+                        Console.WriteLine("Small : 1");
+                        Console.WriteLine("Medium : 3");
+                        Console.WriteLine("Large : 5");
 
 
                         string grootte = Console.ReadLine();
-                        if (grootte == "3")
+                        if (grootte == "1")
                         {
                             size = Size.Small;
                             break;
                         }
-                        else if (grootte == "5")
+                        else if (grootte == "3")
                         {
                             size = Size.Medium;
                             break;
                         }
-                        else if (grootte == "7")
+                        else if (grootte == "5")
                         {
                             size = Size.Large;
                             break;

@@ -8,12 +8,54 @@ namespace Console_CircusTrainChallenge
 {
     public class Wagon
     {
-        int size;
-        public Wagon(int size) 
+        private const int MAX_WAARDE = 10;
+
+        // deze functie maakt wagons en verdeelt de dieren op basis van grootte
+        public List<List<Animal>> CheckWagon(List<Animal> animals)
         {
-           int Size = size;
-        
+            // resultaat: lijst van wagons, elke wagon is een lijst met dieren
+            List<List<Animal>> wagons = new List<List<Animal>>();
+
+            // huidige wagon en huidige som
+            List<Animal> animalsInWagon = new List<Animal>();
+            int som = 0;
+
+            // loop door alle dieren
+            foreach (var dier in animals)
+            {
+                int waarde = (int)dier.Size;
+
+                // past het dier nog in de huidige wagon?
+                if (som + waarde <= MAX_WAARDE)
+                {
+                    animalsInWagon.Add(dier);
+                    som += waarde;
+                }
+                else
+                {
+                    // huidige wagon klaar, voeg toe aan resultaat
+                    if (animalsInWagon.Count > 0)
+                    {
+                        wagons.Add(animalsInWagon);
+                    }
+
+                    // nieuwe wagon beginnen met dit dier
+                    animalsInWagon = new List<Animal>();
+                    animalsInWagon.Add(dier);
+                    som = waarde;
+                }
+            }
+
+            wagons.ForEach(Console.WriteLine);
+            return wagons;
+
+            //ani mals.ForEach(Console.WriteLine);
         }
+
+        //nog toevoegen de willeat veiligheidsfunctie
+        //nog toevoegen de checkwagon moet elke keer vanaf begin van de wagons loopen en proberen het dier toe te voegen
+        //voor meer optimale eindresultaat.
+
 
         //een functie maken om alleen te kijken of een dier nog qua size in de wagon past
         //kijken of met de willeat functie het dier in de wagon mag.
@@ -30,6 +72,8 @@ namespace Console_CircusTrainChallenge
         //en kijk of je kan controleren of een input animal in die wagon past.
 
 
+        //bij wagons checken altijd vanaf eerste wagon beginnen om te checken
+        // je wilt ze optimaal vullen dus vanaf de eerste wil je kijken of er nog een dier bij kan
 
 
     }
